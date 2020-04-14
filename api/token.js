@@ -12,9 +12,10 @@ const router = new Router({
 
 router.post('/', async (ctx, next) => {
     const body = ctx.request.body;
-    const v = await new TokenValidator().validate(ctx);
+
     switch (body.type) {
         case LoginType.USER_EMAIL:
+            const v = await new TokenValidator().validate(ctx);
             console.log(body.account, body.secret)
             var token = await emailLogin(body.account, body.secret)
             ctx.body = {
