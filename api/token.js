@@ -16,13 +16,13 @@ router.post('/', async (ctx, next) => {
     switch (body.type) {
         case LoginType.USER_EMAIL:
             console.log(body.account, body.secret)
-            const token = await emailLogin(body.account, body.secret)
+            var token = await emailLogin(body.account, body.secret)
             ctx.body = {
                 token
             }
             break;
         case LoginType.USER_MINI_PROGRAM:
-            const token = await User.wxLogin(body.code)
+            var token = await User.wxLogin(body.code)
             ctx.body = {
                 token
             }
