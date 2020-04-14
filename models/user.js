@@ -26,7 +26,7 @@ class User extends Model{
     }
     static async codeToOpenid(code){
         const config = global.config.wx;
-        const requestUrl = util.format(config.loginUrl, config.appId, config.appSecret); 
+        const requestUrl = util.format(config.loginUrl, config.appId, config.appSecret, code); 
         let result = await axios.get(requestUrl);
         if(result.status!=200){
             throw new AuthFailed('openid获取失败')
