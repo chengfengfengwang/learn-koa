@@ -1,6 +1,6 @@
 const { User } = require('../models/user');
 const { Success, ParameterException } = require('../core/http-exception');
-const { TokenValidator } = require('../validators/validators.js');
+const { TokenValidator, TokenVerifyValidator } = require('../validators/validators.js');
 const { LoginType } = require('../lib/enum');
 const { generateToken } = require('../core/util');
 const { Auth } = require('../middleware/auth');
@@ -33,6 +33,14 @@ router.post('/', async (ctx, next) => {
     }
 
     //throw new Success();
+})
+router.post('/verify', async (ctx, next) => {
+    const body = ctx.request.body;
+    const v = await new TokenVerifyValidator().validate(ctx);
+    var result = await Auth.verifyToken(body.token)
+    ctx.body = {
+        result
+    }
 })
 async function emailLogin(account, secret) {
     //从数据库验证账号和密码

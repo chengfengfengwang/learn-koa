@@ -15,6 +15,19 @@ Page({
       url: '../logs/logs'
     })
   },
+  verify(){
+    wx.request({
+      url: 'http://localhost:3001/v1/token/verify',
+      method: 'POST',
+      data: {
+        token: wx.getStorageSync('token')
+        //token: 'qwe'
+      },
+      success(result) {
+        console.log(result)
+      }
+    })
+  },
   login(){
     console.log('zzz')
     wx.login({
@@ -30,6 +43,7 @@ Page({
             },
             success(result){
               console.log(result)
+              wx.setStorageSync("token", result.data.token)
             }
           })
         } else {

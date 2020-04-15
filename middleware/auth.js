@@ -9,6 +9,14 @@ class Auth {
     Auth.SUPER_ADMIN=32;
     this.level = level;
   }
+  static verifyToken(token){
+    try {
+      var decoded = jwt.verify(token,global.config.security.secretKey)
+    } catch (error) {
+      return false
+    }
+    return true
+  }
   get m() {
       return async (ctx,next)=>{
         const userToken = basicAuth(ctx.req);

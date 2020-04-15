@@ -11,4 +11,5 @@
     <text class="user-motto">{{motto}}</text>
   </view>
   <button bindtap='login'>登录</button>
+  <button bindtap='verify'>校验</button>
 </view>
