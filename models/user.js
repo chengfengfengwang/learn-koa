@@ -40,14 +40,14 @@ class User extends Model{
         const openId = await this.codeToOpenid(code)
         const user = await User.findOne({
             where:{
-                openId
+                openid:openId
             }
         });
         
         if(!user){
             //创建用户
             await User.create({
-                openId
+                openid:openId
             })
         }
         //返回token
