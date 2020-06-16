@@ -12,4 +12,5 @@
   </view>
   <button bindtap='login'>登录</button>
   <button bindtap='verify'>校验</button>
+  <button bindtap='like'>点赞</button>
 </view>

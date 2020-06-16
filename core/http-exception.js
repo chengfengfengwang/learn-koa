@@ -38,6 +38,14 @@ class AuthFailed extends HttpException{
         this.errorCode = errorCode;
     }
 }
+class LikeError extends HttpException{
+    constructor(msg='已经点过赞了',status=400,errorCode=10004){
+        super();
+        this.msg = msg;
+        this.status = status;
+        this.errorCode = errorCode;
+    }
+}
 module.exports = {
     Success,
     NotFound,

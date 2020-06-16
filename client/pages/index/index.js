@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+import { Base64 } from 'js-base64';
 const app = getApp()
 
 Page({
@@ -28,8 +29,24 @@ Page({
       }
     })
   },
+  like(){
+    wx.request({
+      url: 'http://localhost:3001/v1/like',
+      method: 'POST',
+      data: {
+        type:100,
+        art_id: 1
+      },
+      header:{
+        //token: wx.getStorageInfoSync('token')
+        Authorization:this._encode()
+      },  
+      success(result) {
+        console.log(result)
+      }
+    })
+  },
   login(){
-    console.log('zzz')
     wx.login({
       success(res) {
         if (res.code) {
@@ -42,7 +59,6 @@ Page({
               code: res.code
             },
             success(result){
-              console.log(result)
               wx.setStorageSync("token", result.data.token)
             }
           })
@@ -87,5 +103,12 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  _encode(){
+    const token = wx.getStorageSync('token');
+    console.log(token)
+    const base64 = Base64.encode(token + ':asd');
+    
+    return 'Basic ' +  base64
   }
 })

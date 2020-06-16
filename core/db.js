@@ -21,7 +21,7 @@ const sequelize = new Sequelize(database, username, password, {
       underscored:true
     }
 });
-sequelize.sync({ force: true });
+//sequelize.sync({ force: true });
 module.exports = {
     db:sequelize
 }

@@ -1,6 +1,7 @@
 const basicAuth = require('basic-auth');
-const jwt = require('jsonwebtoken');
-const {AuthFailed} = require('../core/http-exception')
+const {AuthFailed} = require('../core/http-exception');
+const jwt = require('jsonwebtoken')
+
 class Auth {
   constructor(level) {
     //类常量
@@ -20,8 +21,9 @@ class Auth {
   get m() {
       return async (ctx,next)=>{
         const userToken = basicAuth(ctx.req);
-     
+        const token = ctx.request.header.token;
         if(!userToken || !userToken.name){
+        //if(!token){
           throw new AuthFailed('token不合法')
         }else{
           try {

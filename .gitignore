@@ -4,4 +4,4 @@
 dist/
 node_modules/
 AiMusicWechat/*
-
+client/node_modules/
