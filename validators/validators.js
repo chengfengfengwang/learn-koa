@@ -81,9 +81,34 @@ class TokenVerifyValidator extends LinValidator {
     })];
   }
 }
+class LikeValidator extends LinValidator {
+  constructor() {
+    super();
+    this.type = [new Rule("isLength", "type不能为空", { 
+      min: 1
+    })];
+    this.art_id = [new Rule("isLength", "art_id不能为空", { 
+      min: 1
+    })];
+    this.art_id = [new Rule("isInt", "art_id需要是正整数", { min: 1 })];
+  }
+}
+class FavorDetailValidator extends LinValidator {
+  constructor() {
+    super();
+    this.type = [new Rule("isLength", "type不能为空", { 
+      min: 1
+    })];
+    this.id = [new Rule("isLength", "id不能为空", { 
+      min: 1
+    })];
+  }
+}
 module.exports = {
   TokenVerifyValidator,
   PositiveIntegerValidator,
   RegisterValidator,
-  TokenValidator
+  TokenValidator,
+  LikeValidator,
+  FavorDetailValidator
 };

@@ -47,6 +47,7 @@ class LikeError extends HttpException{
     }
 }
 module.exports = {
+    LikeError,
     Success,
     NotFound,
     AuthFailed,

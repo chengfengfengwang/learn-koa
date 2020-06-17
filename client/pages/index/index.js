@@ -104,6 +104,19 @@ Page({
       hasUserInfo: true
     })
   },
+  likeDetail(){
+    wx.request({
+      url: 'http://localhost:3001/v1/like/100/2/favor',
+      method: 'GET',
+      header: {
+        //token: wx.getStorageInfoSync('token')
+        Authorization: this._encode()
+      },
+      success(result) {
+        console.log(result)
+      }
+    })
+  },
   _encode(){
     const token = wx.getStorageSync('token');
     console.log(token)
