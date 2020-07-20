@@ -20,7 +20,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-cors": "0.0.16",
     "koa-router": "^7.4.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.4",
     "require-directory": "^2.1.1",
